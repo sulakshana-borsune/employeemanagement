@@ -25,7 +25,7 @@ function promptCreator() {
 
 
         .then(function (answer) {
-            connection.query('SELECT * FROM employee WHERE first_name = answer.name', (err, answer) => {
+            connection.query('SELECT * FROM employee' , (err, answer) => {
                 if(err){console.log(err)}
                 console.log(answer)
             })
