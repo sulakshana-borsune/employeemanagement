@@ -1,0 +1,23 @@
+DROP DATABASE IF EXISTS department_db;
+CREATE DATABASE department_db;
+
+USE department_db;
+CREATE TABLE departments(
+deptid INT PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
+deptname VARCHAR(20) NOT NULL);
+
+CREATE TABLE roles(
+roleid INT PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
+title VARCHAR(30) NOT NULL,
+salary DECIMAL(5,2),
+deptid INT NOT NULL,
+FOREIGN KEY (deptid) REFERENCES departments(deptid));
+
+CREATE TABLE employee(
+employeeid INT PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
+first_name VARCHAR(30) NOT NULL,
+last_name VARCHAR(30) NOT NULL,
+roleid INT NOT NULL,
+managerid INT NOT NULL,
+FOREIGN KEY (roleid) REFERENCES roles(roleid),
+FOREIGN KEY (managerid) REFERENCES roles(roleid));
